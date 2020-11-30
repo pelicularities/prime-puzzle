@@ -23,8 +23,17 @@ def primes_up_to(n)
 end
 
 def prime_function(n)
+  # This function takes an integer n
+  # and returns 1 if n is prime
+  # or n's smallest divisor if n is not prime
+
+  # Generate an array of all primes up to n
   primes = primes_up_to(n)
+
+  # n is prime: return 1
   return 1 if primes.include?(n)
 
+  # n is not prime: iterate through primes
+  # until the smallest divisor is found
   primes.each { |prime| return prime if (n % prime).zero? }
 end
