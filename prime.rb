@@ -9,9 +9,10 @@ def primes_up_to(n)
     # Delete all multiples of the current divisor
     array.delete_if do |number|
       # #delete_if will mutate the array
+      # Skip number if it is smaller than itself
       # Do not let a prime number delete itself
       # because it is divisible by itself
-      next if number == divisor
+      next if number <= divisor
 
       (number % divisor).zero?
     end
@@ -23,11 +24,7 @@ end
 
 def prime_function(n)
   primes = primes_up_to(n)
-  if primes.include?(n)
-    1
-  else
-    primes.each do |prime|
-      return prime if (n % prime).zero?
-    end
-  end
+  return 1 if primes.include?(n)
+
+  primes.each { |prime| return prime if (n % prime).zero? }
 end
